@@ -9,6 +9,6 @@ The collection can be updated with 3 actions:
 `[0 1 2 3 4 5 6 7 8 9]` -> `[3 4 5 6 7 8 9 0 1 2]` (example for cut 3)
 - `deal with increment N` which take the nth element of the list (starting at index 0) and put it at the n times N position, wrapping around when the final index is longuer than the list.  
 `[0 1 2 3 4 5 6 7 8 9]` -> `[0 7 4 1 8 5 2 9 6 3]` (example for deal with increment 3)  
-:warning: The number N and the size of the list must be relatively prime numbers and the implementation does not double check than condition for performance motive
+:warning: The number N and the size of the list must be relatively prime numbers and the implementation does not double check that condition for performance motive
 
 
