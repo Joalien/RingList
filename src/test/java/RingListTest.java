@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -23,7 +22,7 @@ class RingListTest {
     class UnitTest {
         @Test
         void deal() {
-            ringList.deal();
+            ringList.reverseOrder();
             assertEquals(List.of(9, 8, 7, 6, 5, 4, 3, 2, 1, 0), ringList.mapToRingList());
         }
 
@@ -34,6 +33,12 @@ class RingListTest {
         }
 
         @Test
+        void cutWithHighPositiveNumber() {
+            ringList.cut(27);
+            assertEquals(List.of(7, 8, 9, 0, 1, 2, 3, 4, 5, 6), ringList.mapToRingList());
+        }
+
+        @Test
         void cutWithNegativeNumber() {
             ringList.cut(-3);
             assertEquals(List.of(7, 8, 9, 0, 1, 2, 3, 4, 5, 6), ringList.mapToRingList());
@@ -41,7 +46,7 @@ class RingListTest {
 
         @Test
         void increment() {
-            ringList.increment(3);
+            ringList.dealWithIncrement(3);
             assertEquals(List.of(0, 7, 4, 1, 8, 5, 2, 9, 6, 3), ringList.mapToRingList());
         }
     }
@@ -50,24 +55,24 @@ class RingListTest {
     class ExampleTests {
         @Test
         void example1() {
-            ringList.increment(7);
-            ringList.deal();
-            ringList.deal();
+            ringList.dealWithIncrement(7);
+            ringList.reverseOrder();
+            ringList.reverseOrder();
             assertEquals(List.of(0, 3, 6, 9, 2, 5, 8, 1, 4, 7), ringList.mapToRingList());
         }
 
         @Test
         void example2() {
             ringList.cut(6);
-            ringList.increment(7);
-            ringList.deal();
+            ringList.dealWithIncrement(7);
+            ringList.reverseOrder();
             assertEquals(List.of(3, 0, 7, 4, 1, 8, 5, 2, 9, 6), ringList.mapToRingList());
         }
 
         @Test
         void example3() {
-            ringList.increment(7);
-            ringList.increment(9);
+            ringList.dealWithIncrement(7);
+            ringList.dealWithIncrement(9);
             ringList.cut(-2);
             assertEquals(List.of(6, 3, 0, 7, 4, 1, 8, 5, 2, 9), ringList.mapToRingList());
 
@@ -75,15 +80,15 @@ class RingListTest {
 
         @Test
         void example4() {
-            ringList.deal();
+            ringList.reverseOrder();
             ringList.cut(-2);
-            ringList.increment(7);
+            ringList.dealWithIncrement(7);
             ringList.cut(8);
             ringList.cut(-4);
-            ringList.increment(7);
+            ringList.dealWithIncrement(7);
             ringList.cut(3);
-            ringList.increment(9);
-            ringList.increment(3);
+            ringList.dealWithIncrement(9);
+            ringList.dealWithIncrement(3);
             ringList.cut(-1);
             assertEquals(List.of(9, 2, 5, 8, 1, 4, 7, 0, 3, 6), ringList.mapToRingList());
         }
@@ -97,7 +102,7 @@ class RingListTest {
 
         @BeforeEach
         void increment7() {
-            ringList.increment(7);
+            ringList.dealWithIncrement(7);
         }
 
         @Test

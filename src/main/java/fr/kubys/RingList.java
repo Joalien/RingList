@@ -21,7 +21,10 @@ public class RingList<E> implements List<E> {
         this.elements = Arrays.asList(elements);
     }
 
-    public void increment(int n) {
+    /**
+     * @param n must be relatively prime with the size of the list
+     */
+    public void dealWithIncrement(int n) {
         step *= n;
         offset *= n;
     }
@@ -30,7 +33,7 @@ public class RingList<E> implements List<E> {
         offset -= n;
     }
 
-    public void deal() {
+    public void reverseOrder() {
         step *= -1;
         offset = (offset * -1) - 1;
     }
